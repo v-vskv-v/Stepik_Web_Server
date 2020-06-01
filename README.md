@@ -1,2 +1,2 @@
-## Stepik_Web_Server
+## Stepik Web Server
 Course Work
