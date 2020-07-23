@@ -16,6 +16,11 @@ then
 	sudo rm /etc/gunicorn.d/test
 fi
 
+if [ -e /etc/gunicorn.d/ask ]
+then
+	sudo rm /etc/gunicorn.d/ask
+fi
+
 sudo ln -s ~/web/etc/gunicorn.conf /etc/gunicorn.d/test
-sudo ln -s /home/box/web/etc/ask.py   /etc/gunicorn.d/ask.py
+sudo ln -s /home/box/web/etc/ask.conf   /etc/gunicorn.d/ask
 sudo /etc/init.d/gunicorn restart
