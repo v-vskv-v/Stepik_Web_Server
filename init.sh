@@ -29,5 +29,5 @@ sudo /etc/init.d/mysql start
 
 mysql -uroot -e "create database if not exists qa"
 
-sudo python3 ~/web/ask/manage.py makemigrations
-sudo python3 ~/web/ask/manage.py migrate
+sudo python3 ~/web/ask/manage.py makemigrations qa
+sudo python3 ~/web/ask/manage.py migrate qa
