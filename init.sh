@@ -24,3 +24,10 @@ fi
 sudo ln -s ~/web/etc/gunicorn.conf /etc/gunicorn.d/test
 sudo ln -s /home/box/web/etc/ask.conf   /etc/gunicorn.d/ask
 sudo /etc/init.d/gunicorn restart
+
+sudo /etc/init.d/mysql start
+
+mysql -uroot -e "create database if not exists qa"
+
+sudo python /home/box/web/ask/manage.py makemigrations
+sudo python /home/box/web/ask/manage.py migrate
