@@ -9,8 +9,8 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def get_render(questions, html):
+    limit = request.GET.get('limit', 10)
     try:
-        limit = int(request.GET.get('limit', 10))
         page = int(request.GET.get('page', 1))
     except ValueError:
         raise Http404

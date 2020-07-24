@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class QuestionManager(models.Manager):
     def new(self):
-        return self.order_by('-added_at')
+        return self.order_by('-added_at', '-id')
     def popular(self):
-        return self.order_by('-rating')
+        return self.order_by('-rating', '-id')
 
 class Question(models.Model):
     objects = QuestionManager()
@@ -15,6 +16,10 @@ class Question(models.Model):
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User)
     likes = models.ManyToManyField(User, related_name='likes_set')
+    def get_url(self):
+        return reverse('question-info', kwargs={'q_id':self.id})
+    def __unicode__(self):
+        return self.title
     class Meta:
         ordering = ['-added_at']
 
